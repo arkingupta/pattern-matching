@@ -1,0 +1,2 @@
+1) Generate Steady state pattern files using getFilenames.m in the "new_data" folder.
+2) Insert all steady state pattern files in this folder, all must be named "ss_ex_<ex number>_label_<label number>.mat".
