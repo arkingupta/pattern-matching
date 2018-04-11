@@ -1,0 +1,2 @@
+Place files into this folder, and run Getfilenames.m to generate all steady state patterns. 
+Files in this folder must be named "sequences_mnist_ex_<example number>_label_<label number>.mat"
