@@ -1,7 +1,8 @@
-nulist = dir;
+list = dir;
 A = {list.name};
+disp(A);
 
-for i=17:64
+for i=12:71
     disp(A{i});
     load(A{i});
     
@@ -10,7 +11,7 @@ for i=17:64
     newStr = 'ss' + newStr;
     
     [finalStats,temporalMotifsVar] = seqAnalysis(overallGlobalPaths,810);
-    outputNodes= [810:810];                                                                                                                                                                                             
+    outputNodes= [810:813];                                                                                                                                                                                             
     [newShortestCycle,seqPlot]=analytics_cycleAnalysis(finalStats,temporalMotifsVar,outputNodes);
     fileName = char(newStr);
     save(fileName,'newShortestCycle');
