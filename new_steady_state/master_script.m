@@ -1,6 +1,7 @@
 %MASTER SCRIPT for sequence analysis
 %Last Update: 04/17/2018
 
+
 %Grabbing files in folder
 list = dir;
 A = {list.name};
@@ -10,7 +11,7 @@ one = {};three = {};nine = {}; zero = {};
 disp(A);
 
 %Change range of i to iterate only through ss files
-for i=11:70
+for i=10:69
     str = A{i};
     newStr = extractAfter(str, strlength(str)-5);
     if(newStr == '1.mat')
@@ -31,7 +32,7 @@ end
 %Initializing tables
 
 %UPDATE THE FOLLOWING VARIABLES:
-max_dict = 5;
+max_dict = 3;
 
 final_table_0 = zeros(4,max_dict);
 final_table_25 = zeros(4,max_dict);
@@ -113,16 +114,21 @@ for t_label = 1:4
             
             %Run against all dictionaries
             atest_vals = {};
-            atest_vals{1} = analytics_dynPerc_compare_seq(File, 'dict_zero.mat');
-            atest_vals{2} = analytics_dynPerc_compare_seq(File, 'dict_one.mat');
-            atest_vals{3} = analytics_dynPerc_compare_seq(File, 'dict_three.mat');
-            atest_vals{4} = analytics_dynPerc_compare_seq(File, 'dict_nine.mat');
+            disp(File);
+            disp('vs');
+            disp('zero');
+            atest_vals{1} = analytics_dynPerc_compare_seq('dict_zero.mat', File);
+            disp('one');
+            atest_vals{2} = analytics_dynPerc_compare_seq('dict_one.mat', File);
+            disp('three');
+            atest_vals{3} = analytics_dynPerc_compare_seq('dict_three.mat', File);
+            disp('nine');
+            atest_vals{4} = analytics_dynPerc_compare_seq('dict_nine.mat', File);
             
             
             test_vals = {};
             for k = 1:4
                 if(k ~= t_label)
-                    
                     test_vals{end+1} = atest_vals{k};
                 end
             end
@@ -132,6 +138,7 @@ for t_label = 1:4
              max_val = max(max_val,test_vals{3}(1));
 
              if (atest_vals{t_label}(1) > max_val)
+                 disp('increasing 0');
                 total_correct_1 =  total_correct_1 + 1;
              end
              
@@ -139,7 +146,8 @@ for t_label = 1:4
              max_val = max(test_vals{1}(2),test_vals{2}(2));
              max_val = max(max_val,test_vals{3}(2));
 
-             if (atest_vals{t_label}(1) > max_val)
+             if (atest_vals{t_label}(2) > max_val)
+                 disp('increasing 25');
                 total_correct_2 =  total_correct_2 + 1;
              end
              
@@ -147,7 +155,8 @@ for t_label = 1:4
              max_val = max(test_vals{1}(3),test_vals{2}(3));
              max_val = max(max_val,test_vals{3}(3));
 
-             if (atest_vals{t_label}(1) > max_val)
+             if (atest_vals{t_label}(3) > max_val)
+                 disp('increasing 50');
                 total_correct_3 =  total_correct_3 + 1;
              end
              
@@ -156,7 +165,8 @@ for t_label = 1:4
              max_val = max(max_val,test_vals{3}(4));
 
 
-             if (atest_vals{t_label}(1) > max_val)
+             if (atest_vals{t_label}(4) > max_val)
+                 disp('increasing 75');
                 total_correct_4 =  total_correct_4 + 1;
              end
              
@@ -164,7 +174,8 @@ for t_label = 1:4
              max_val = max(test_vals{1}(5),test_vals{2}(5));
              max_val = max(max_val,test_vals{3}(5));
 
-             if (atest_vals{t_label}(1) > max_val)
+             if (atest_vals{t_label}(5) > max_val)
+                 disp('increasing 100');
                 total_correct_5 =  total_correct_5 + 1;
              end
             

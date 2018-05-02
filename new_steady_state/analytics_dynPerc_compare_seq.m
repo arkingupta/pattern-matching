@@ -21,9 +21,9 @@ end
 
  % load file and save variable to use
   load (File1); % put the different file names here
-  fullCircuitSeq = newShortestCycle; % try different types of sequences
+  fullCircuitSeq = steadyStateSeq; % try different types of sequences
   load (File2); % put the different file names here
-  subCircuitSeq = newShortestCycle; % try different types of sequences
+  subCircuitSeq = steadyStateSeq; % try different types of sequences
 
   X = ['Example 1 vs. Example 2']; % swap the example files, 
                                    % and test against the same example
